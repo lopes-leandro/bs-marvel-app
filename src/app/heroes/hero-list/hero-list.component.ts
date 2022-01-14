@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Hero } from 'src/app/shared/models/hero-class';
+import { HeroService } from 'src/app/shared/services/hero.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroListComponent implements OnInit {
 
-  constructor() { }
+  heroes$ = new Observable<Hero[]>();
+
+  constructor(private heroService: HeroService) { 
+    this.heroes$ = this.heroService.getCharacters();
+  }
 
   ngOnInit(): void {
   }

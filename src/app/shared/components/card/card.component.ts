@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+interface ICard {
+  id: number;
+  description: string;
+  name: string;
+  thumbnail: string;
+}
 
 @Component({
   selector: 'app-card',
@@ -8,13 +15,22 @@ import { Router } from '@angular/router';
 })
 export class CardComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @Input('source') source: Partial<ICard> = {};
+  @Input('navigate') navigateUrl: string = '';
+
+  constructor(private router: Router) {
+    console.log(this.source);
+
+  }
 
   ngOnInit(): void {
   }
 
   public cardClicked(): void {
-    this.router.navigate([`/heroes/detail/123`]);
+    if (!this.navigateUrl) {
+      return;
+    }
+    this.router.navigate([`${this.navigateUrl}/${this.source?.id}`])
   }
 
 }

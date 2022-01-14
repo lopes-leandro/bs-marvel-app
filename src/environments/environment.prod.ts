@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  safeWord: 'SAFE_WORD',
-  publicKey: 'PUBLIC_KEY',
-  privateKey: 'PRIVATE_KEY',
-  urlApi: 'URL_API'
+  SAFE_WORD: 'SAFE_WORD',
+  PUBLIC_KEY: 'PUBLIC_KEY',
+  PRIVATE_KEY: 'PRIVATE_KEY',
+  URL_API: 'URL_API'
 };

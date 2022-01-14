@@ -23,11 +23,11 @@ export class HeroService implements IHeroService{
   }
 
   constructor(private http: HttpClient) {
-    this.hash = Md5.hashStr(`${environment.SAFE_WORD}${environment.PRIVATE_KEY}${environment.PUBLIC_KEY}`);
+    this.hash = Md5.hashStr(`${environment.safeWord}${environment.privateKey}${environment.publicKey}`);
     this.params = new HttpParams({
       fromObject: {
-        ts: environment.SAFE_WORD,
-        apikey: environment.PUBLIC_KEY,
+        ts: environment.safeWord,
+        apikey: environment.publicKey,
         hash: this.hash
       }
     }); 
@@ -35,7 +35,7 @@ export class HeroService implements IHeroService{
 
   public getCharacters(): Observable<Hero[]> {
     return this.http.get<{data: { results: HeroDto[]}}>(
-      `${environment.URL_API}${this.url.characters}`, 
+      `${environment.urlApi}${this.url.characters}`, 
       {params: this.params}
     ).pipe(
       retry(2),
@@ -45,7 +45,7 @@ export class HeroService implements IHeroService{
 
   public getCharactersByIdComics(): Observable<any> {
     return this.http.get<{data: { results: HeroDto[]}}>(
-      `${environment.URL_API}${this.url.characters}/${'id'}/comics`, 
+      `${environment.urlApi}${this.url.characters}/${'id'}/comics`, 
       {params: this.params}
     ).pipe(
       retry(2),

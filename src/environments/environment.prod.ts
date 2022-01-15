@@ -3,5 +3,5 @@ export const environment = {
   SAFE_WORD: 'foursys',
   PUBLIC_KEY: '5a237863b3cc2061003cbbc4fe20dc06',
   PRIVATE_KEY: 'fbf255068eccea6d0ef951b9f25626b57ab2fe72',
-  URL_API: 'gateway.marvel.com'
+  URL_API: 'https://gateway.marvel.com'
 };

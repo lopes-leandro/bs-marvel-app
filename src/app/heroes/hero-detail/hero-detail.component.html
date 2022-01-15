@@ -1,8 +1,103 @@
-<div class="p-5 mb-4 bg-light rounded-3">
+<div class="p-4 bg-light"
+    style="background-image: url({{hero.thumbnail}}); background-size: 215px 215px; background-position: -12% 30%; filter: grayscale(100%); ">
+</div>
+<div class="p-5 text-white bg-dark" style="min-height: 400px;">
     <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Custom jumbotron</h1>
-        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in
-            previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your
-            liking.</p>
+        <h1 class="display-5 fw-bold">{{hero.name}}</h1>
+        <p class="col-md-8 fs-5">{{hero.description}}</p>
     </div>
+</div>
+<div class="p-4 mb-4 bg-light"
+    style="background-image: url({{hero.thumbnail}}); background-size: 215px 215px; background-position: -12% 30%; filter: grayscale(100%); ">
+</div>
+<div class="container">
+    <hr class="my-5" style="border: 1px solid #c6c6c6;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">World</strong>
+                    <h3 class="mb-0">Featured post</h3>
+                    <div class="mb-1 text-muted">Nov 12</div>
+                    <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.</p>
+                    <a href="#" class="stretched-link">Continue reading</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                        role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                        focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-success">Design</strong>
+                    <h3 class="mb-0">Post title</h3>
+                    <div class="mb-1 text-muted">Nov 11</div>
+                    <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.</p>
+                    <a href="#" class="stretched-link">Continue reading</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                        role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                        focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container marketing">
+    <hr class="my-5" style="border: 1px solid #c6c6c6;">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="d-flex flex-column align-items-center justify-content-center" *ngFor="let comic of comics">
+            <img src="{{comic.imgUrl}}" width="140" height="140" class="bd-placeholder-img rounded-circle" alt="...">
+            <h5 class="my-4">{{comic.title}}</h5>
+            <p class="text-center">Some representative placeholder content for the three columns of text below the
+                carousel. This is the
+                first column.</p>
+            <p class="my-4"><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                    dy=".3em">140x140</text>
+            </svg>
+
+            <h2 class="my-4">Heading</h2>
+            <p class="text-center">Some representative placeholder content for the three columns of text below the
+                carousel. This is the
+                first column.</p>
+            <p class="my-4"><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777"
+                    dy=".3em">140x140</text>
+            </svg>
+
+            <h2 class="my-4">Heading</h2>
+            <p class="text-center">Some representative placeholder content for the three columns of text below the
+                carousel. This is the
+                first column.</p>
+            <p class="my-4"><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div>
+    <hr class="mt-5" style="border: 1px solid #c6c6c6;">
 </div>

@@ -18,10 +18,7 @@ export class CardComponent implements OnInit {
   @Input('source') source: Partial<ICard> = {};
   @Input('navigate') navigateUrl: string = '';
 
-  constructor(private router: Router) {
-    console.log(this.source);
-
-  }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

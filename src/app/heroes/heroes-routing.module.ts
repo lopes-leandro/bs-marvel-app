@@ -19,7 +19,7 @@ const routes: Routes = [
         component: HeroListComponent
       },
       {
-        path: 'detail/:id',
+        path: 'detail/:charactereId',
         component: HeroDetailComponent
       }
     ]

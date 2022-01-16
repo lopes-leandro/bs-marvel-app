@@ -13,9 +13,7 @@ export interface IPrices {
     price: string;
 }
 
-export interface IStories {}
-
-export interface ISeries {
+export interface ISeries extends IBase {
     title: string;
     startYear: number;
     endYear: number;

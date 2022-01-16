@@ -4,7 +4,7 @@ import { Md5 } from "ts-md5";
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Comics, ComicsDto, Hero, HeroDto } from '../models/hero-class';
+import { Comics, ComicsDto, Hero, HeroDto, SeriesDto, Series } from '../models/hero-class';
 
 export interface IHeroService {
   readonly heroes$: BehaviorSubject<any>
@@ -13,8 +13,8 @@ export interface IHeroService {
 @Injectable({
   providedIn: 'root'
 })
-export class HeroService implements IHeroService{
-  
+export class HeroService implements IHeroService {
+
   heroes$ = new BehaviorSubject<any>(0);
   hash: string;
   params: HttpParams;
@@ -30,29 +30,38 @@ export class HeroService implements IHeroService{
         apikey: environment.PUBLIC_KEY,
         hash: this.hash
       }
-    }); 
+    });
   }
 
   public getCharacters(): Observable<Hero[]> {
-    return this.http.get<{data: { results: HeroDto[]}}>(
-      `${environment.URL_API}${this.url.characters}`, 
-      {params: this.params}
+    return this.http.get<{ data: { results: HeroDto[] } }>(
+      `${environment.URL_API}${this.url.characters}`,
+      { params: this.params }
     ).pipe(
       retry(2),
-      map(res => this.transformationMarvelData(res.data.results))
+      map(res => this.transformByCharacters(res.data.results))
     )
   }
 
   public getCharactersByIdComics(charactereId: string): Observable<Comics[]> {
-    return this.http.get<{data: { results: ComicsDto[]}}>(
-      `${environment.URL_API}${this.url.characters}/${charactereId}/comics`, 
-      {params: this.params}
+    return this.http.get<{ data: { results: ComicsDto[] } }>(
+      `${environment.URL_API}${this.url.characters}/${charactereId}/comics`,
+      { params: this.params }
     ).pipe(
       retry(2),
-      map(res => this.transformationCharactersByComics(res.data.results))
+      map(res => this.transformByComics(res.data.results))
     )
   }
 
+  public getSeriesByCharacters(charactereId: string): Observable<Series[]> {
+    return this.http.get<{ data: { results: SeriesDto[] } }>(
+      `${environment.URL_API}${this.url.characters}/${charactereId}/comics`,
+      { params: this.params }
+    ).pipe(
+      retry(2),
+      map(res => this.transformBySeries(res.data.results))
+    )
+  }
 
   getCharacteresById(charactereId: string): Observable<Hero> {
     return this.http.get<{ data: { results: HeroDto[] } }>(
@@ -61,11 +70,26 @@ export class HeroService implements IHeroService{
         params: this.params
       })
       .pipe(
-        map((res) => this.transformationMarvelSimpleData(res.data.results))
+        map((res) => this.transformaByCharacter(res.data.results))
       );
   }
 
-  transformationCharactersByComics(res: ComicsDto[]): Comics[]{
+  private transformBySeries(res: SeriesDto[]): Series[] {
+    let series = new Array<Series>();
+    res.forEach(item => {
+      series.push({
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        startYear: item.startYear,
+        endYear: item.endYear,
+        imgUrl: `${item.thumbnail.path}.${item.thumbnail.extension}`
+      })
+    })
+    return series;
+  }
+
+  private transformByComics(res: ComicsDto[]): Comics[] {
     let comics = new Array<Comics>();
     res.forEach(item => {
       comics.push({
@@ -79,11 +103,11 @@ export class HeroService implements IHeroService{
         imgUrl: `${item.thumbnail.path}.${item.thumbnail.extension}`
       })
     })
-    
+
     return comics
   }
 
-  transformationMarvelSimpleData(res: HeroDto[]): Hero {
+  private transformaByCharacter(res: HeroDto[]): Hero {
     let hero = new Hero();
 
     res.forEach(item => {
@@ -96,10 +120,10 @@ export class HeroService implements IHeroService{
       }
     });
 
-    return hero
+    return hero;
   }
 
-  transformationMarvelData(res: HeroDto[]): Hero[] {
+  private transformByCharacters(res: HeroDto[]): Hero[] {
     let heroes: Hero[] = [];
 
     res.forEach(item => heroes.push(
@@ -111,6 +135,6 @@ export class HeroService implements IHeroService{
       }
     ));
 
-    return heroes
+    return heroes;
   }
 }

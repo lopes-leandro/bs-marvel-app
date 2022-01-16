@@ -1,4 +1,4 @@
-import { IBase, IComics, IThumbnail } from "../interfaces/hero-interface";
+import { IBase, IComics, ISeries, IThumbnail } from "../interfaces/hero-interface";
 
 export class HeroDto implements IBase {
     constructor(
@@ -40,6 +40,28 @@ export class Comics implements IComics {
         public ean = '',
         public format = '',
         public pageCount = '',
+        public imgUrl = ''
+    ) { }
+}
+
+export class SeriesDto implements ISeries {
+    constructor(
+        public title = '',
+        public startYear = 0,
+        public endYear = 0,
+        public id = 0,
+        public description = '',
+        public thumbnail = { path: '', extension: '' } as IThumbnail
+    ) { }
+}
+
+export class Series implements ISeries {
+    constructor(
+        public title = '',
+        public startYear = 0,
+        public endYear = 0,
+        public id = 0,
+        public description = '',
         public imgUrl = ''
     ) { }
 }

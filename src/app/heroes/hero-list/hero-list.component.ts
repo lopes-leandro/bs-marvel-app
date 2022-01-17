@@ -16,8 +16,8 @@ export class HeroListComponent implements OnInit, OnDestroy {
   heroes = new Array<Hero>();
   isStreamActive: boolean;
 
-  constructor(private heroService: HeroService) {   
-    this.isStreamActive = false;  
+  constructor(private heroService: HeroService) {
+    this.isStreamActive = false;
     this.searchForm = new FormGroup({
       character: new FormControl('', []),
     });
@@ -29,20 +29,17 @@ export class HeroListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.isStreamActive = true;
-    this.searchHeroes();
-    this.searchForm.get('character')?.valueChanges
-      .pipe(
-        takeWhile(() => !!this.isStreamActive),
-        debounceTime(600)
-      ).subscribe(() => this.searchHeroes())
+    this.searchHeroes('');
   }
 
-  searchHeroes() {
-    const query = this.searchForm.get('character')?.value;
-    this.heroService.searchCharacters(query).subscribe((heroes) => {
-      this.heroes = heroes;
-    })
+  searchHeroes(query: string) {
+    this.isStreamActive = true;
+    this.heroService.searchCharacters(query)
+      .pipe(
+        takeWhile(() => !!this.isStreamActive)
+      ).subscribe((heroes) => {
+        this.heroes = heroes;
+      })
   }
 
 }

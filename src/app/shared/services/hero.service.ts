@@ -74,6 +74,18 @@ export class HeroService implements IHeroService {
       );
   }
 
+  public searchCharacters(characterName: string): Observable<Hero[]> {
+    return this.getCharacters().pipe(map(characters => {
+      if (!characterName) {
+        return characters;
+      }
+      return characters.filter(character => {
+        const query = characterName.toLowerCase();
+        return (character.name.toLowerCase().includes(query))
+      })
+    }))
+  }
+
   private transformBySeries(res: SeriesDto[]): Series[] {
     let series = new Array<Series>();
     res.forEach(item => {

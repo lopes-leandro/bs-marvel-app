@@ -2,6 +2,7 @@
     <div class="card shadow-sm" (click)="cardClicked()">
         <img class="bd-placeholder-img card-img-top h-100" src="{{source?.thumbnail}}" alt="">
         <div class="card-body">
+            <h5>{{source?.name}}</h5>
             <p class="card-text text-truncate" *ngIf="source?.description; else NotFound">{{source?.description}}</p>
             <ng-template #NotFound>
                 <p class="card-text text-truncate">no information</p>

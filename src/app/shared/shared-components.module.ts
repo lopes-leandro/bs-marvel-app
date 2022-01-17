@@ -7,6 +7,7 @@ import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     CardComponent,
     SearchComponent,
     LoaderComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     CardComponent,
     SearchComponent,
     LoaderComponent,
+    AboutComponent,
   ]
 })
 export class SharedComponentsModule { }

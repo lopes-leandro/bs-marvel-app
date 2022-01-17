@@ -6,6 +6,7 @@ import { HeroesComponent } from './heroes.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { SharedComponentsModule } from '../shared/shared-components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedComponentsModule } from '../shared/shared-components.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     HeroesRoutingModule,
     SharedComponentsModule
   ]

@@ -4,15 +4,15 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { CardComponent } from './components/card/card.component';
-
-
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
     ContactsComponent,
-    CardComponent
+    CardComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule
@@ -21,7 +21,8 @@ import { CardComponent } from './components/card/card.component';
     FooterComponent,
     HeaderComponent,
     ContactsComponent,
-    CardComponent
+    CardComponent,
+    SearchComponent,
   ]
 })
 export class SharedComponentsModule { }

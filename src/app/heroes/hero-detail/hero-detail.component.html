@@ -2,7 +2,15 @@
     style="background-image: url({{hero.thumbnail}}); background-size: 215px 215px; background-position: -12% 30%; filter: grayscale(100%); ">
 </div>
 <div class="p-5 text-white bg-dark" style="min-height: 385px;">
-    <div class="container-fluid py-5">
+    <div class="container py-5">
+        <a [routerLink]="'/heroes/list'" class="position-relative" style="top: -65px;" title="Voltar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+            </svg>
+        </a>
+
         <h1 class="display-5 fw-bold">{{hero.name}}</h1>
         <p class="col-md-8 fs-5">{{hero.description}}</p>
     </div>

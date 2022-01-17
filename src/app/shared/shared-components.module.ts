@@ -6,6 +6,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactsComponent,
     CardComponent,
     SearchComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactsComponent,
     CardComponent,
     SearchComponent,
+    LoaderComponent,
   ]
 })
 export class SharedComponentsModule { }
